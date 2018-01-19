@@ -1,0 +1,32 @@
+{
+  "name": "expenses-server",
+  "version": "1.0.0",
+  "description": "Node js server for ExpensesProject",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kelmyashkin/ExpensesServer.git"
+  },
+  "author": "Oleg Kelmyashkin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kelmyashkin/ExpensesServer/issues"
+  },
+  "homepage": "https://github.com/Kelmyashkin/ExpensesServer#readme",
+  "devDependencies": {
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0"
+  },
+  "eslintConfig": {
+    "extends": ["airbnb-base", "prettier"]
+  },
+  "dependencies": {
+    "koa": "^2.4.1"
+  }
+}
