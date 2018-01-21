@@ -1,4 +1,5 @@
 import Koa from 'koa';
+import cors from '@koa/cors';
 import config from 'config';
 import mongoose from 'mongoose';
 
@@ -18,6 +19,7 @@ mongoose.connect(config.database.link).then(
 );
 
 app.use(error);
+app.use(cors());
 app.use(routes());
 app.use(allowedMethods());
 

@@ -7,14 +7,13 @@ import Expense from '../models/expense';
 
 const router = new Router();
 const koaBody = convert(KoaBody());
-
 router
   .get('/expenses/byDate/', async ctx => {
     const { date } = ctx.query;
     const start = moment(date).startOf('day');
     const end = moment(start).add(1, 'd');
     ctx.body = await Expense.find({
-      date: { $gte: start, $lte: end },
+      date: { $gte: start, $lt: end },
     });
   })
   .get('/expenses/byRange/', async ctx => {
