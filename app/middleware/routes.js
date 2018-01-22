@@ -4,7 +4,7 @@ import KoaBody from 'koa-body';
 import moment from 'moment';
 
 import Expense from '../models/expense';
-// import ExpenseCategory from '../models/expenseCategory';
+import ExpenseCategory from '../models/expenseCategory';
 
 const router = new Router();
 const koaBody = convert(KoaBody());
@@ -34,6 +34,7 @@ router
     ctx.body = await Expense.find();
   })
   .post('/expenses', koaBody, async ctx => {
+    console.log(ctx.request.body);
     const expense = new Expense(ctx.request.body);
     expense.save();
     ctx.body = expense;
@@ -53,13 +54,7 @@ router
   });
 
 router.get('/expenses/categories/', async ctx => {
-  // ctx.body = await ExpenseCategory.find();
-  ctx.body = [
-    { name: 'Transport', color: '#17e239' },
-    { name: 'Supermarkets', color: '#e21717' },
-    { name: 'Restorants', color: '#ef00ff' },
-    { name: 'Other', color: '#e4ff00' },
-  ];
+  ctx.body = await ExpenseCategory.find();
 });
 
 export function routes() {
