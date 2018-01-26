@@ -9,6 +9,10 @@ import ExpenseCategory from '../models/expenseCategory';
 const router = new Router();
 const koaBody = convert(KoaBody());
 router
+  .get('/expenses/categories/', async ctx => {
+    console.log('bla');
+    ctx.body = await ExpenseCategory.find();
+  })
   .get('/expenses/byDate/', async ctx => {
     const { date } = ctx.query;
     const start = moment(date).startOf('day');
@@ -52,10 +56,6 @@ router
     const result = await Expense.findByIdAndRemove(ctx.params.id);
     ctx.body = result;
   });
-
-router.get('/expenses/categories/', async ctx => {
-  ctx.body = await ExpenseCategory.find();
-});
 
 export function routes() {
   return router.routes();
